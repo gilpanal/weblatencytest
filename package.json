@@ -1,0 +1,23 @@
+{
+  "name": "weblatencytest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilpanal/weblatencytest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilpanal/weblatencytest/issues"
+  },
+  "homepage": "https://github.com/gilpanal/weblatencytest#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
