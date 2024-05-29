@@ -1,5 +1,5 @@
 
-export function drawBuffer(width, height, context, data) {
+function drawBuffer(width, height, context, data) {
     const step = Math.ceil(data.length / width)
     const amp = height / 2
     for (let i = 0; i < width; i++) {
@@ -63,27 +63,13 @@ export function drawAutocorrelation(autocorrelation, idcanvas) {
         const y = (1 - (i / 5)) * (height - padding) + padding / 2
         ctx.fillText(value, padding / 2 - 10, y)
     }
-
-    // Add a mouse click event listener to the canvas
-    canvas.addEventListener('click', function (event) {
-        const rect = canvas.getBoundingClientRect()
-        const x = event.clientX - rect.left
-        const y = event.clientY - rect.top
-
-        // Check if the click is near the bottom (where the X axis is)
-        if (y >= height - padding) {
-            const index = Math.floor((x - padding / 2) / ((width - padding) / autocorrelation.length))
-            if (index >= 0 && index < autocorrelation.length) {
-                alert(`X value: ${index}`)
-            }
-        }
-    })
+   
 }
 
 
 export function findPeak(autocorrelation) {
-    let peakValue = autocorrelation[0] // Initialize peakValue to the first element
-    let peakIndex = 0 // Initialize peakIndex at 0
+    let peakValue = autocorrelation[0]
+    let peakIndex = 0
 
     for (let i = 1; i < autocorrelation.length; i++) {
         if (autocorrelation[i] > peakValue) {
@@ -105,10 +91,6 @@ export const clearCanvas = () => {
     const canvasLeft = document.getElementById('leftChannelCanvas')
     const ctxLeft = canvasLeft.getContext('2d')
     ctxLeft.clearRect(0, 0, canvasLeft.width, canvasLeft.height)
-
-    // const canvasRight = document.getElementById('rightChannelCanvas')
-    // const ctxRight = canvasRight.getContext('2d')
-    // ctxRight.clearRect(0, 0, canvasRight.width, canvasRight.height)
 }
 
 export async function fetchAudioContext(url, audioContext) {
@@ -120,7 +102,7 @@ export async function fetchAudioContext(url, audioContext) {
 }
 
 export function calculateCrossCorrelation(inputDataBuffer1, inputDataBuffer2, maxLag) {
-    //let data1 = inputDataBuffer1.getChannelData(1)
+    
     let data1 = inputDataBuffer1.getChannelData(0)
     let data2 = inputDataBuffer2.getChannelData(0)
     const n1 = data1.length, n2 = data2.length
@@ -138,72 +120,11 @@ export function calculateCrossCorrelation(inputDataBuffer1, inputDataBuffer2, ma
     return crossCorrelations
 }
 
-// Example usage
-export async function main() {
-    const signal1 = await fetchAudioContext(recorded_noise)
-    const signal2 = await fetchAudioContext(mlsaudio)
-    console.log(signal1)
-    console.log(signal2)
-    // Assuming mono signals
-    const correlation = calculateCrossCorrelation(signal1, signal2, 22050)
-    //const correlation = crossCorrelate(signal1.getChannelData(0), signal2.getChannelData(0))
-    //console.log(correlation)
-    const peak = findPeak(correlation)
-    console.log('Peak Value:', peak.peakValue, 'at Index:', peak.peakIndex)
-    console.log('Latency = ', peak.peakIndex / signal1.sampleRate * 1000 + ' ms')
-    drawAutocorrelation(correlation, 'autocorrelationCanvas2')
-}
-
-
 export const drawResults = (signalrecorded, recordedAudioURL, correlation) => {
     const canvasLeft = document.getElementById('leftChannelCanvas')
     drawBuffer(canvasLeft.width, canvasLeft.height, canvasLeft.getContext('2d'), signalrecorded.getChannelData(0))
-    // const canvasRight = document.getElementById('rightChannelCanvas')
-    // if (signalrecorded.numberOfChannels > 1) {
-    //     drawBuffer(canvasRight.width, canvasRight.height, canvasRight.getContext('2d'), signalrecorded.getChannelData(1))
-    // }
     drawAutocorrelation(correlation, 'autocorrelationCanvas2')
-
     document.getElementById('recordedaudio').src = recordedAudioURL
     document.getElementById('downloadableaudio').href = recordedAudioURL
     document.getElementById('downloadableaudio').disabled = false
 }
-
-/* White Noise Mozilla: https://mdn.github.io/webaudio-examples/audio-buffer/ */
-export function generateMLS(length) {
-    let register = Array(length).fill(0);
-    register[length - 1] = 1; // Initial state with last bit set
-    let sequence = [];
-    let taps = [length - 1, length - 2]; // Example for a length of 31
-
-    for (let i = 0; i < (1 << length) - 1; i++) {
-        const newBit = taps.reduce((acc, tap) => acc ^ register[tap], 0);
-        sequence.push(register.pop());
-        register.unshift(newBit);
-    }
-
-    return sequence.map(bit => bit * 2 - 1); // Convert 0,1 to -1,1
-}
-
-// Step 3: Create an Audio Buffer and fill it with the MLS signal
-export function createMLSBuffer(sequence, audioCtx) {
-    const buffer = audioCtx.createBuffer(1, sequence.length, audioCtx.sampleRate);
-    const channelData = buffer.getChannelData(0);
-    sequence.forEach((value, index) => channelData[index] = value);
-    return buffer;
-}
-
-// Step 4: Play the MLS signal
-export function playMLS(buffer, audioCtx, callback) {
-    
-    const source = audioCtx.createBufferSource();
-    source.buffer = buffer;
-    source.connect(audioCtx.destination);
-    source.start();
-    source.onended = function() {
-        console.log('Playback finished');
-        callback()
-        // Additional code to execute after playback finishes
-    };
-}
-
