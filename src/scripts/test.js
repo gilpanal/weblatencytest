@@ -140,9 +140,6 @@ export class TestLatencyMLS {
                 chunks.push(event.data)
             }
             mediaRecorder.onstop = async () => {
-                if(TestLatencyMLS.recordGainNode){
-                    TestLatencyMLS.recordGainNode.disconnect()
-                }
                 noiseSource.disconnect(splitter)
                 splitter.disconnect(merger, 0, 0)
                 merger.disconnect(TestLatencyMLS.audioContext.destination)
