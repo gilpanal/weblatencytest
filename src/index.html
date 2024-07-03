@@ -7,27 +7,13 @@
     <title>hiaudio</title>
     <meta name="description" content="hiaudio">
     <meta charset="UTF-8">
-    <title>Latency Test MLS Based Demo</title>
+    <title>AudioWorklet Latency Test Based Demo</title>
 </head>
 
 <body>
-    <main id="page-content">
-        <a class="nav-link" href="#" id="newtestlatency" data-toggle="modal" data-toggle="popover"
-            data-placement="bottom" title="Testing ..." data-content="No input detected">
-            Test Latency</a>
-        <div class="container" id="audio-area">
-            <p>
-                <audio id="recordedaudio" preload="auto" controls="controls"></audio>
-                <a id="downloadableaudio" href="" role="button" download disabled
-                    onKeyPress="">Download recording</a>
-            </p>
-            <p>
-                <canvas id="leftChannelCanvas" width="800" height="100" style="border:1px solid #000000;"></canvas>
-            </p>
-            <p>
-                <canvas id="autocorrelationCanvas2" style="border:1px solid #000000;"></canvas>
-            </p>            
-        </div>
+    <main id="page-header">
+        <a class='nav-link' href='#' id='testlatencymlsbtn' data-toggle='modal' 
+        data-toggle='popover' data-placement='bottom'  title='Testing ...' data-content='No input detected'></a>
 
     </main>
     <script type="module" src="scripts/index.js"></script>
