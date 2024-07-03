@@ -5,11 +5,6 @@ class BitError extends Error {
     }
 }
 
-// const bittaps = {
-//     2: [1], 3: [2], 4: [3], 5: [2], 6: [5], 7: [6], 8: [4, 5, 6],
-//     9: [5], 10: [7], 11: [9]
-// };
-
 const bittaps = {
     2: [1], 3: [2], 4: [3], 5: [2], 6: [5], 7: [6], 8: [4, 5, 6],
     9: [5], 10: [7], 11: [9], 12: [6, 8, 11], 13: [4, 12], 14: [5, 13],
@@ -49,6 +44,5 @@ export function generateMLS(nbits) {
     nbits = parseInt(nbits);
     let m = mls(nbits);
     // nbits = 65535
-    // console.log(`Output for ${nbits} bit M-Sequence:`, m);
-    return m    
+    return m
 }
