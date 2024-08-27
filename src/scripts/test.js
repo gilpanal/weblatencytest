@@ -38,10 +38,14 @@ export class TestLatencyMLS {
             const micsource = TestLatencyMLS.audioContext.createMediaStreamSource(stream)
             TestLatencyMLS.recordGainNode = TestLatencyMLS.audioContext.createGain()
             micsource.connect(TestLatencyMLS.recordGainNode)
-            // If echocancellation is set to false in constraints the input gain from mic is very low, that's why we need to increase it to 50
+            // If echocancellation is set to false in constraints the input gain from mic is very low, 
+            // that's why we need to increase it to 50
             const defaultGain = 50
             TestLatencyMLS.recordGainNode.gain.value = defaultGain
             const dest = TestLatencyMLS.audioContext.createMediaStreamDestination()
+            // If echocancellation is set to false in constraints the input when using wired earpods (with mic) 
+            // is stereo but one single channel (left) so we need to force channelCount to be 1
+            dest.channelCount = 1
             TestLatencyMLS.recordGainNode.connect(dest)
             return dest.stream
         } else {
@@ -123,12 +127,7 @@ export class TestLatencyMLS {
             const noiseSource = TestLatencyMLS.audioContext.createBufferSource()
             noiseSource.buffer = TestLatencyMLS.noiseBuffer
 
-            const splitter = TestLatencyMLS.audioContext.createChannelSplitter(2)
-            const merger = TestLatencyMLS.audioContext.createChannelMerger(2)
-
-            noiseSource.connect(splitter)
-            splitter.connect(merger, 0, 0) // Connect only the left channel
-            merger.connect(TestLatencyMLS.audioContext.destination)            
+            noiseSource.connect(TestLatencyMLS.audioContext.destination)
             
             TestLatencyMLS.audioContext.createMediaStreamSource(TestLatencyMLS.inputStream)
 
@@ -140,9 +139,7 @@ export class TestLatencyMLS {
                 chunks.push(event.data)
             }
             mediaRecorder.onstop = async () => {
-                noiseSource.disconnect(splitter)
-                splitter.disconnect(merger, 0, 0)
-                merger.disconnect(TestLatencyMLS.audioContext.destination)
+                noiseSource.disconnect(TestLatencyMLS.audioContext.destination)
                 TestLatencyMLS.displayAudioTagElem(chunks, mediaRecorder.mimeType)
             }
 
