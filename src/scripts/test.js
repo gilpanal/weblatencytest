@@ -84,7 +84,8 @@ export class TestLatencyMLS {
         
         TestLatencyMLS.inputStream = userMediaStream
         if(TestLatencyMLS.debugCanvas){
-            userMediaStream.getTracks().forEach(async function(track) {
+            userMediaStream.getAudioTracks().forEach(async function(track) {
+                console.log('Test Latency Track Settings', track)
                 console.log('Test Latency Track Settings', track.getSettings())
             })
         }
@@ -128,8 +129,6 @@ export class TestLatencyMLS {
             noiseSource.buffer = TestLatencyMLS.noiseBuffer
 
             noiseSource.connect(TestLatencyMLS.audioContext.destination)
-            
-            TestLatencyMLS.audioContext.createMediaStreamSource(TestLatencyMLS.inputStream)
 
             let chunks = []
 
