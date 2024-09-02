@@ -4,6 +4,8 @@ The following repository is a Proof Of Concept to measure the latency in modern 
 The app will play and record the MLS noise using the Web Audio API and will compute the cross correlation to estimate the delay. 
 A graph is also displayed showing the resulting peak of the cross correlation and the wave form of audio data recorded.
 
+As a mechanism to validate if the test went well or not, the ratio operation is introduced to calculate the relation between the peak and the rest of the signal in terms of energy. After running some tests a threshold of 1.8 aprox has been set, which means all ratios above that value are linked to a nice latency estimation and below are probably wrong.
+
 ![screenshot](doc/test_result.png)
 
 ## How to run it locally:

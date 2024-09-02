@@ -26,17 +26,18 @@ addEventListener('message', (message) => {
   }
   
   function findPeakAndMean(array, channel) {
-    let peakValue = array[0]
     let peakIndex = 0
-    let sum = 0
+    let energy = 0
+    let peakValuePow = Math.pow(array[0], 2)
   
     for (let i = 1; i < array.length; i++) {
-      if (array[i] > peakValue) {
-        peakValue = array[i]
-        peakIndex = i
-      }
-      sum += array[i]
+        const samplePow = Math.pow(array[i], 2)
+        if (samplePow > peakValuePow) {
+            peakValuePow = samplePow
+            peakIndex = i
+        }
+        energy += samplePow
     }
-    const mean = sum / array.length
-    postMessage({ peakValue, peakIndex, mean, channel })
+    const mean = energy / array.length
+    postMessage({ peakValuePow, peakIndex, mean, channel })
   }
