@@ -2,12 +2,10 @@
   "name": "weblatencytest",
   "version": "1.0.0",
   "description": "",
-  "source": "src/index.html",
   "scripts": {
-    "start": "parcel src/*.html",
     "dev": "parcel --no-cache src/*.html",
-    "build": "parcel build src/index.html",
-    "predeploy": "rm -rf dist && parcel build src/index.html --no-source-maps --public-url ./",
+    "build": "parcel build 'src/*.html'",
+    "predeploy": "rm -rf dist && parcel build 'src/*.html' --public-url ./",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
