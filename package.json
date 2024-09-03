@@ -5,7 +5,7 @@
   "source": "src/index.html",
   "scripts": {
     "dev": "parcel --no-cache src/*.html",
-    "build": "parcel build",
+    "build": "parcel build 'src/*.html'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
