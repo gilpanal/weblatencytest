@@ -6,7 +6,7 @@ A graph is also displayed showing the resulting peak of the cross correlation an
 
 As a mechanism to validate if the test went well or not, the ratio operation is introduced to calculate the relation between the peak and the rest of the signal in terms of energy. After running some tests a threshold of 1.8 aprox has been set, which means all ratios above that value are linked to a nice latency estimation and below are probably wrong.
 
-![screenshot](doc/test_result.png)
+![screenshot](doc/latency_test_result.png)
 
 ## How to run it locally:
 

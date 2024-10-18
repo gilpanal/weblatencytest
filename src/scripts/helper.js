@@ -18,8 +18,8 @@ function drawBuffer(width, height, context, data) {
 
 export function drawAutocorrelation(autocorrelation, idcanvas) {
     const canvas = document.getElementById(idcanvas)
-    canvas.width = window.innerWidth / 2
-    canvas.height = window.innerHeight / 2
+    canvas.width = window.innerWidth * 0.75
+    canvas.height = window.innerHeight * 0.75
     const ctx = canvas.getContext('2d')
 
     // Clear previous drawings
@@ -29,7 +29,7 @@ export function drawAutocorrelation(autocorrelation, idcanvas) {
     const width = canvas.width
     const height = canvas.height
     const maxAutocorrValue = Math.max(...autocorrelation)
-    const padding = 40 // Padding for labels
+    const padding = 180 // Padding for labels
 
     // Draw each point in the autocorrelation array
     autocorrelation.forEach((value, index) => {

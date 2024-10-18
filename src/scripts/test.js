@@ -6,6 +6,7 @@ const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
 const CANVAS = `<div class='container' id='audio-area'>
                     <canvas id='leftChannelCanvas' width='800' height='100' style='border:1px solid #000000;'></canvas>
                     <canvas id='rightChannelCanvas' width='800' height='100' style='border:1px solid #000000;' hidden></canvas>
+                    <br>
                     <canvas id='autocorrelationCanvas1' style='border:1px solid #000000;'></canvas>
                     <canvas id='autocorrelationCanvas2' style='border:1px solid #000000;' hidden></canvas>
                 </div>`
