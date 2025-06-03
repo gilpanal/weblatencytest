@@ -92,3 +92,64 @@ export const drawResults = (signalrecorded, audioCanvasId, corrCanvasId, correla
     drawBuffer(canvasSide.width, canvasSide.height, canvasSide.getContext('2d'), signalrecorded)
     drawAutocorrelation(correlation, corrCanvasId)
 }
+
+export const drawLatencyHistogram = (data, canvasId) => {
+    const topMargin = 30; // space for count labels above bars
+    const bottomMargin = 30;
+    const leftMargin = 40;   
+    
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Count frequency of each latency
+    const freqMap = {};
+    data.forEach(item => {
+        const latency = item.latency.toFixed(2);
+        freqMap[latency] = (freqMap[latency] || 0) + 1;
+    });
+
+    const labels = Object.keys(freqMap).sort((a, b) => parseFloat(a) - parseFloat(b));
+    const values = labels.map(label => freqMap[label]);
+
+    const slotWidth = (canvas.width - leftMargin) / labels.length;
+    const barWidth = slotWidth * 0.2; // use 60% of the slot for the bar
+    const barSpacing = slotWidth * 0.4; // space between bars
+    const maxVal = Math.max(...values);
+    const scaleY = (canvas.height - bottomMargin - topMargin) / maxVal;
+
+    // Draw axis
+    ctx.beginPath();
+    ctx.moveTo(leftMargin, topMargin);  // top of Y axis
+    ctx.lineTo(leftMargin, canvas.height - bottomMargin);  // bottom Y axis
+    ctx.lineTo(canvas.width, canvas.height - bottomMargin); // X axis
+    ctx.stroke();
+
+    // Draw bars
+   labels.forEach((label, i) => {
+        const count = values[i];
+        const barHeight = count * scaleY;
+        const x = leftMargin + i * slotWidth;
+        const y = canvas.height - bottomMargin - barHeight;
+
+        // Draw bar
+        ctx.fillStyle = '#4285F4';
+        ctx.fillRect(x + barSpacing / 2, y, barWidth, barHeight);
+
+        // Draw latency label
+        ctx.fillStyle = '#000';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(label, x + slotWidth / 2, canvas.height - 10);
+        ctx.fillText(count, x + slotWidth / 2, y - 5);
+    });
+
+
+    // Draw Y-axis labels
+    ctx.fillStyle = '#000';
+    ctx.font = '12px sans-serif';
+    ctx.fillText('', 5, 20);
+    ctx.fillText('', canvas.width / 2, canvas.height - 5);
+}
