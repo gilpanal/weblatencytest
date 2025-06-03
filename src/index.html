@@ -13,9 +13,13 @@
 <body>
     <main id="page-header">
         <a class='nav-link' href='#' id='testlatencymlsbtn' data-toggle='modal' 
-        data-toggle='popover' data-placement='bottom'  title='Testing ...' data-content='No input detected'></a>
+        data-toggle='popover' data-placement='bottom'  title='Testing ...' data-content='No input detected'
+        onclick="event.preventDefault();"></a>
         <div id="log-message"></div>
     </main>
+    <div style="margin-top: 20px;">
+        <canvas id="latencyHistogram" width="800" height="500"></canvas>
+    </div>
     <script type="module" src="scripts/index.js"></script>
 </body>
 

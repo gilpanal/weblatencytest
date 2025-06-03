@@ -17,3 +17,4 @@ Requirement: Node.js v14
 3. `npm i`
 4. `npm run dev`
 5. Navigate to `localhost:1234`
+6. To perform several tests in a row use athe following query param like this: `http://localhost:1234/?numberOfTests=5`
