@@ -22,6 +22,7 @@ const enableWakeLock = async() => {
       console.log('Error', err)
     }
   }
+  document.getElementById('popup').style.display = 'none';
 }
 
 const main = async () => {
@@ -30,7 +31,7 @@ const main = async () => {
         console.log('stream')
         const ac = new AudioContext({latencyHint:0})
          if(wakeLock === null){
-            await enableWakeLock()
+            document.getElementById('wakeButton').onclick = enableWakeLock
          }
         TestLatencyMLS.initialize(ac, stream, TEST_LAT_MLS_BTN_ID, debugCanvas, numberOfTests)
     } catch (error) {
