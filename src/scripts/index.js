@@ -10,11 +10,28 @@ const TEST_LAT_MLS_BTN_ID = 'testlatencymlsbtn'
 
 const constraints = { audio: {echoCancellation:false, noiseSuppression:false, autoGainControl:false, latency: 0, channelCount: 1 }}
 
+let wakeLock = null
+const enableWakeLock = async() => {
+  if ('wakeLock' in navigator) {    
+    try {
+      wakeLock = await navigator.wakeLock.request('screen')
+      console.log('Wake Lock Activated')
+    } catch (err) {
+      wakeLock = false
+      // The Wake Lock request has failed - usually system related, such as battery.
+      console.log('Error', err)
+    }
+  }
+}
+
 const main = async () => {
     try {
         const stream = await navigator.mediaDevices.getUserMedia(constraints)
         console.log('stream')
         const ac = new AudioContext({latencyHint:0})
+         if(wakeLock === null){
+            await enableWakeLock()
+         }
         TestLatencyMLS.initialize(ac, stream, TEST_LAT_MLS_BTN_ID, debugCanvas, numberOfTests)
     } catch (error) {
         document.getElementById('log-message').innerText = error
