@@ -201,11 +201,14 @@ export class TestLatencyMLS {
             )
             const meanRatio = LATENCYTESTRESULTS.reduce((sum, result) => sum + result.ratio, 0) / LATENCYTESTRESULTS.length
             const stdRatio = Math.sqrt(
-                LATENCYTESTRESULTS.reduce((sum, result) => sum + Math.pow(result.ratio - meanLatency, 2), 0) / LATENCYTESTRESULTS.length
+                LATENCYTESTRESULTS.reduce((sum, result) => sum + Math.pow(result.ratio - meanRatio, 2), 0) / LATENCYTESTRESULTS.length
             )
+            const latencies = LATENCYTESTRESULTS.map(result => result.latency)
+            const minLatency = Math.min(...latencies)
+            const maxLatency = Math.max(...latencies)
             //console.log(LATENCYTESTRESULTS)
             drawLatencyHistogram(LATENCYTESTRESULTS, 'latencyHistogram')          
-            document.getElementById('log-message').innerText = `Mean latency: ${meanLatency.toFixed(2)} ms, Std deviation latency: ${stdLatency.toFixed(2)}, Mean ratio: ${meanRatio.toFixed(2)} dB, Std deviation ratio: ${stdRatio.toFixed(2)}`
+            document.getElementById('log-message').innerText = `Mean latency: ${meanLatency.toFixed(2)} ms, Std deviation latency: ${stdLatency.toFixed(2)}, Min latency: ${minLatency.toFixed(2)} ms, Max latency: ${maxLatency.toFixed(2)} ms, Mean ratio: ${meanRatio.toFixed(2)} dB, Std deviation ratio: ${stdRatio.toFixed(2)}`
         }
     }
 
