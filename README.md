@@ -6,7 +6,7 @@ As a mechanism to validate if the test went well or not, the ratio operation is 
 
 The implementation of the proposed method is available as part of the [Hi-Audio online platform](https://hiaudio.fr)—an open-source, collaborative browser-based DAW—providing a practical demonstration of its applicability and integration in real-world web audio environments.
 
-![screenshot1](doc/latency_test_result.png)
+![screenshot1](doc/latency_test_results.png)
 
 ## How to run it locally:
 
