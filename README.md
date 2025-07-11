@@ -1,10 +1,10 @@
 ## About
 
-The following repository is a Proof Of Concept to measure the latency in modern web browsers by using a MLS signal (a type of noise). The app will play and record the MLS noise using the Web Audio API and will compute the cross correlation to estimate the delay. Two graphs are displayed showing the resulting peak of the cross correlation and the wave form of audio data recorded. A histogram is also generated to facilitate analysis of the results when running the test multiple times in a row (see step 6 below). The objective is to identify which browsers and operating systems yield the most stable results.
+The following repository is a Proof Of Concept to measure the round-trip latency in modern web browsers by using a [MLS (Maximum Length Sequence)](https://en.wikipedia.org/wiki/Maximum_length_sequence) signal (a type of noise). The app will play and record the MLS noise using the Web Audio API and will compute the cross-correlation to estimate the delay. Two graphs are displayed showing the resulting peak of the cross correlation and the waveform of audio data recorded. A histogram is also generated to facilitate analysis of the results when running the test multiple times in a row (see step 6 below). One of the objectives is to identify which browsers and operating systems yield the most stable results when it comes to measure the round-trip latency.
 
 As a mechanism to validate if the test went well or not, the ratio operation is introduced to calculate the relation between the peak and the rest of the signal in terms of energy. In practice, a pre-defined fixed threshold set to +18dB is defined to consider the test successful, which means all ratios above that value are linked to a nice latency estimation and below are probably wrong.
 
-The implementation of the proposed method is available as part of the [Hi-Audio online platform](https://hiaudio.fr)—an open-source, browser-based DAW—providing a practical demonstration of its applicability and integration in real-world web audio environments.
+The implementation of the proposed method is available as part of the [Hi-Audio online platform](https://hiaudio.fr)—an open-source, collaborative browser-based DAW—providing a practical demonstration of its applicability and integration in real-world web audio environments.
 
 ![screenshot1](doc/latency_test_result.png)
 
@@ -54,3 +54,5 @@ The following figure illustrates a representative case using a Lenovo laptop run
 3) News: https://hi-audio.imt.fr/2025/03/07/bridging-music-and-research/
 
 4) Hi-Audio web-app repository: https://github.com/idsinge/hiaudio_webapp
+
+5) Python code to compute correlation between signals: https://gist.github.com/gilpanal/f6a64a8fe797190bba22123dfea29611
