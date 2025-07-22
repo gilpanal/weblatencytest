@@ -21,7 +21,7 @@ Requirement: Node.js v14 or above
 
 ## Results and discussion
 
-The table below presents the results of some experiments conducted for the paper presented at [WAC 25](https://wac-2025.ircam.fr/). Round-trip latency results were obtained over 100 consecutive tests for different browsers and systems. The table reports the mean latency, standard deviation, and the corresponding minimum and maximum values, all expressed in milliseconds (ms).
+The table below presents the results of some experiments conducted for [the paper presented](https://hal.science/hal-05154354) at [WAC 25](https://wac-2025.ircam.fr/). Round-trip latency results were obtained over 100 consecutive tests for different browsers and systems. The table reports the mean latency, standard deviation, and the corresponding minimum and maximum values, all expressed in milliseconds (ms).
 
 | **System / Browser**       | **Mean (ms)** | **Std. Dev. (ms)** | **Min (ms)** | **Max (ms)** |
 |----------------------------|---------------|---------------------|--------------|--------------|
