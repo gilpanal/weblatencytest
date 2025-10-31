@@ -45,6 +45,44 @@ The following figure illustrates a representative case using a Lenovo laptop run
 
 ![screenshot2](doc/histogram_latencies_edge.png)
 
+---
+
+Comparative table showing the round-trip latency values obtained in ms in different online DAWs using Firefox when recording a MLS signal. The first column contains the name of the application and the device and operating system where it runs. The second column is the round-trip latency obtained after cross-correlate the recorded MLS signal before DAW compensation. The third column is the value of the round-trip latency provided by the DAW. The fourth column is the remaining latency obtained by cross-correlation after latency compensation when recording again the MLS. For this last column the target value is 0.
+
+| **Device / DAW app**  | **MLS latency no comp. (ms)** | **Latency estimation (ms)** | **MLS latency with comp. (ms)** |
+| :-------------------- | ----------------------------: | --------------------------: | ------------------------------: |
+| **HP Ubuntu 22.04**   |                               |                             |                                 |
+| Soundtrap¹            |                       -175.46 |                         249 |                         -182.77 |
+| Amped Studio²         |                         38.05 |                          69 |                          -11.38 |
+| Bandlab               |                         65.12 |                         139 |                          -73.85 |
+| WAM-online studio³    |                         96.96 |                       79.14 |                           58.66 |
+| Hi-Audio              |                         66.64 |                       66.39 |                            0.68 |
+| **Lenovo Windows 10** |                               |                             |                                 |
+| Soundtrap¹            |                        -90.79 |                         314 |                         -179.08 |
+| Amped Studio²         |                         55.77 |                         146 |                           -7.96 |
+| Bandlab⁴⁵             |                        131.42 |                         147 |                          -14.56 |
+| WAM-online studio³⁵   |                        149.12 |                      129.71 |                           53.73 |
+| Hi-Audio              |                        138.50 |                      138.44 |                            0.48 |
+| **MacBook Pro 2021**  |                               |                             |                                 |
+| Soundtrap¹            |                          -184 |                         232 |                         -194.24 |
+| Amped Studio⁶         |                             – |                           – |                               – |
+| Bandlab               |                         38.71 |                          38 |                            0.73 |
+| WAM-online studio³    |                         48.73 |                       36.37 |                           20.66 |
+| Hi-Audio              |                         39.07 |                       38.96 |                            1.09 |
+
+---
+
+**Footnotes:**
+
+1. *Soundtrap applies a default compensation before running the actual latency test.*
+2. *Amped Studio shows in Settings options a default value of 20 ms for latency compensation in Ubuntu and macOS, and 80 ms for Windows.*
+3. *WAM-online studio measures the round-trip but compensates it by subtracting the output latency from the total.*
+4. *Bandlab applies preprocessing to the signal, similar to web audio constraints.*
+5. *The output volume needs to be increased from 66 to 87 to properly run the latency test.*
+6. *Recording from mic not working for Firefox in macOS.*
+
+---
+
 ## More info about Hi-Audio
 
 1) Journal article: https://hal.science/hal-05153739v1
