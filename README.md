@@ -17,7 +17,7 @@ Requirement: Node.js v14 or above
 3. `npm i`
 4. `npm run dev`
 5. Navigate to `localhost:1234`
-6. To perform several tests in a row use athe following query param like this: `http://localhost:1234/?numberOfTests=5`
+6. To perform several consecutive tests use the following query param like this: `http://localhost:1234/?numberOfTests=5`
 
 ## Results and discussion
 
@@ -47,7 +47,7 @@ The following figure illustrates a representative case using a Lenovo laptop run
 
 ---
 
-Comparative table showing the round-trip latency values obtained in ms in different online DAWs using Firefox when recording a MLS signal. The first column contains the name of the application and the device and operating system where it runs. The second column is the round-trip latency obtained after cross-correlate the recorded MLS signal before DAW compensation. The third column is the value of the round-trip latency provided by the DAW. The fourth column is the remaining latency obtained by cross-correlation after latency compensation when recording again the MLS. For this last column the target value is 0.
+Below a comparative table showing the round-trip latency values obtained in ms in different online DAWs using Firefox when recording a MLS signal. The first column contains the name of the application, the device and operating system where it runs. The second column is the round-trip latency obtained after cross-correlate the recorded MLS signal before DAW compensation. The third column is the value of the round-trip latency provided by the DAW. The fourth column is the remaining latency obtained by cross-correlation after latency compensation when recording again the MLS. For this last column the target value is 0.
 
 | **Device / DAW app**  | **MLS latency no comp. (ms)** | **Latency estimation (ms)** | **MLS latency with comp. (ms)** |
 | :-------------------- | ----------------------------: | --------------------------: | ------------------------------: |
