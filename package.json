@@ -1,7 +1,7 @@
 {
   "name": "weblatencytest",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proof-of-concept web app for measuring browser round-trip audio latency using an MLS signal.",
   "scripts": {
     "dev": "parcel --no-cache src/*.html",
     "build": "parcel build 'src/*.html'",
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/gilpanal/weblatencytest.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Hi-Audio",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/gilpanal/weblatencytest/issues"
   },
