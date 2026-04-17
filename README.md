@@ -87,7 +87,7 @@ The following figure illustrates a representative case using a Lenovo laptop run
 
 ---
 
-Below is a comparative table showing round-trip latency values, in milliseconds, obtained in different online DAWs using Firefox when recording an MLS signal. The first column contains the application name together with the device and operating system used. The second column is the round-trip latency obtained by cross-correlating the recorded MLS signal before DAW compensation. The third column is the round-trip latency value provided by the DAW. The fourth column is the remaining latency obtained by cross-correlation after latency compensation when recording the MLS again. For this last column, the target value is `0`.
+Below is a comparative table showing round-trip latency values, in milliseconds, obtained in different online DAWs using Firefox when recording an MLS signal. The first column contains the application name together with the device and operating system used. The second column is the round-trip latency obtained by cross-correlating the recorded MLS signal before DAW compensation (see note 5 below for the tool used). The third column is the round-trip latency value provided by the DAW. The fourth column is the remaining latency obtained by cross-correlation after latency compensation when recording the MLS again. For this last column, the target value is `0`.
 
 | **Device / DAW app**  | **MLS latency no comp. (ms)** | **Latency estimation (ms)** | **MLS latency with comp. (ms)** |
 | :-------------------- | ----------------------------: | --------------------------: | ------------------------------: |
@@ -133,7 +133,7 @@ Below is a comparative table showing round-trip latency values, in milliseconds,
 
 4. Hi-Audio web-app repository: https://github.com/idsinge/hiaudio_webapp
 
-5. Python code to compute correlation between signals: https://gist.github.com/gilpanal/f6a64a8fe797190bba22123dfea29611
+5. Python/Google Colab notebook for MLS-based latency estimation: https://gist.github.com/gilpanal/f6a64a8fe797190bba22123dfea29611
 
 ---
 
@@ -142,6 +142,8 @@ Below is a comparative table showing round-trip latency values, in milliseconds,
 This work is developed as part of the project *Hybrid and Interpretable Deep Neural Audio Machines*, funded by the **European Research Council (ERC)** under the European Union's Horizon Europe research and innovation programme (grant agreement No. 101052978).
 
 <img src="./doc/ERC_logo.png" alt="European Research Council logo" width="250"/>
+
+We also thank [Louis Bahrman](https://github.com/Louis-Bahrman) for his collaboration on this project, including his contributions to the [Python/Google Colab notebook for MLS-based latency estimation](https://gist.github.com/gilpanal/f6a64a8fe797190bba22123dfea29611).
 
 ---
 
