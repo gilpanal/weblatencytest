@@ -1,6 +1,6 @@
 # API Reference — `@hi-audio/latency-test`
 
-> **Draft.** This document describes the planned API for the `<latency-test>` web component. The component is not yet published. See [CLAUDE_REVIEW.md](../CLAUDE_REVIEW.md) for migration status.
+> **Draft.** This document describes the planned API for the `<latency-test>` web component. The component is not yet published.
 
 ---
 

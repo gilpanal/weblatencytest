@@ -1,6 +1,6 @@
 # Installation & Setup — `@hi-audio/latency-test`
 
-> **Draft.** The package is not yet published to npm. This document describes the intended installation workflow once it is. See [CLAUDE_REVIEW.md](../CLAUDE_REVIEW.md) for migration status.
+> **Draft.** The package is not yet published to npm. This document describes the intended installation workflow once it is.
 
 ---
 
