@@ -1,26 +1,30 @@
 {
-  "name": "weblatencytest",
+  "name": "@hi-audio/latency-test",
   "version": "1.0.0",
-  "description": "Proof-of-concept web app for measuring browser round-trip audio latency using an MLS signal.",
+  "description": "Web Component for measuring browser round-trip audio latency using MLS, chirp, or Golay signals.",
   "scripts": {
     "dev": "parcel --no-cache src/*.html",
     "build": "parcel build 'src/*.html'",
     "predeploy": "rm -rf dist && parcel build 'src/*.html' --public-url ./",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gilpanal/weblatencytest.git"
+    "url": "git+https://github.com/idsinge/rountriplatencytest-webcomponent.git"
   },
-  "keywords": [],
+  "keywords": ["web-component", "audio", "latency", "mls", "audioworklet", "webaudio"],
   "author": "Hi-Audio",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gilpanal/weblatencytest/issues"
+    "url": "https://github.com/idsinge/rountriplatencytest-webcomponent/issues"
   },
-  "homepage": "https://github.com/gilpanal/weblatencytest#readme",
+  "homepage": "https://idsinge.github.io/rountriplatencytest-webcomponent/",
   "devDependencies": {
     "gh-pages": "^6.1.1",
-    "parcel": "^2.12.0"
+    "parcel": "^2.12.0",
+    "vitepress": "^1.6.0"
   }
 }
