@@ -125,7 +125,7 @@ Below is a comparative table showing round-trip latency values, in milliseconds,
 
 ## More info about Hi-Audio
 
-1. Journal article: https://hal.science/hal-05153739v1
+1. Article at EURASIP Journal on Audio, Speech, and Music Processing: [https://link.springer.com/article/10.1186/s13636-026-00459-0](https://link.springer.com/article/10.1186/s13636-026-00459-0)
 
 2. Hi-Audio online platform: https://hiaudio.fr
 
