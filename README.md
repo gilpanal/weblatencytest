@@ -40,6 +40,8 @@ Requirement: Node.js v14 or above
 
 ## Test setup and interpretation
 
+![MLS test setup](doc/MLS_Test.png)
+
 - The tool measures round-trip latency by playing the MLS signal through the browser output and capturing it again through the microphone input.
 - For meaningful results, use a stable acoustic or wired loopback setup with clearly audible output and minimal background noise.
 - The reported latency is displayed in milliseconds together with a correlation ratio in dB.
